@@ -1,3 +1,16 @@
-<h1>This is the Model's index page.</h1>
+<h1>Computer Languages:</h1>
+
+<ul>
+    <% @languages.each do |language|%>
+    <h2><%= language.name%></h2>
+    <p><%= language.description%></p> 
+    <img src="<%= language.logo_image%>" alt="language">
+    <% end %>
+
+  
+
+
+</ul>
+
 
 

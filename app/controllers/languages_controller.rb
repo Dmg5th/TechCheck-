@@ -2,7 +2,7 @@ class LanguagesController < ApplicationController
 
   # GET: /languages
   get "/languages" do
-    
+    @languages = Language.all 
     erb :"/languages/index.html"
   end
 
