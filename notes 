@@ -6,4 +6,5 @@ TO DO
 # Create migrations ✔️
 # Create models with relationships 
 # Plan out routes for controller following restful conventions  
-# build out forms and controller actions simulteanously 
+# build out forms and controller actions and passing appropriate data to views
+# build views (forms)
