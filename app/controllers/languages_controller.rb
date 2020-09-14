@@ -13,7 +13,12 @@ class LanguagesController < ApplicationController
 
   # POST: /languages
   post "/languages" do
-    redirect "/languages"
+    language= Language.new(params)
+    if language.save
+      redirect "/languages"
+    else 
+      erb :"/languages/new.html"
+    end 
   end
 
   # GET: /languages/5
