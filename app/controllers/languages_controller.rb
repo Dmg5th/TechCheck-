@@ -33,12 +33,14 @@ class LanguagesController < ApplicationController
   # GET: /languages/5/edit
   get "/languages/:id/edit" do
     @language = Language.find(params[:id])
-    
+
     erb :"/languages/edit.html"
   end
 
   # PATCH: /languages/5
   patch "/languages/:id" do
+    
+    
     redirect "/languages/:id"
   end
 
