@@ -18,7 +18,7 @@ class LanguagesController < ApplicationController
 
   # GET: /languages/5
   get "/languages/:id" do
-    @language = Language.find()
+    @language = Language.find(params[:id])
 
     erb :"/languages/show.html"
   end
