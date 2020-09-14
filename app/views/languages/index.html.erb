@@ -3,7 +3,7 @@
 <ul>
     <% @languages.each do |language|%>
     <img src="<%= language.logo_image%>" alt="language">
-    <h2><%= language.name%></h2> 
+    <h2><a href="/languages/<%= language.id%>"><%= language.name%></a> </h2> 
     <p><%= language.description%></p> 
     <p1>Companies that use this language: <%= language.companies %></p1>
     
