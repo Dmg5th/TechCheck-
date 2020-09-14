@@ -1,1 +1,16 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit info for <%=@language.name %>!</h1>
+<p><%=@error%></p>
+<form action="/languages" method="post">
+    <!-- <label>Language Name</label> -->
+    <input type="text" name="name" placeholder="Language Name "><br>
+    <!-- <label>Language Image</label> --><br>
+    <input type="text" name="logo_image" placeholder="Image URL"><br>
+    <!-- <label>Companies that use this language</label> --><br>
+    <input type="text" name="companies" placeholder="Companies"><br>
+    <!-- <label>Short bio and description of Language</label> --><br>
+    <textarea name="description" placeholder="Short description"></textarea><br><br><br>
+   
+    <button>Edit Language</button>
+
+
+</form>
