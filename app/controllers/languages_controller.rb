@@ -14,9 +14,11 @@ class LanguagesController < ApplicationController
   # POST: /languages
   post "/languages" do
     language= Language.new(params)
-    if language.save
+    if !language.name.empty?
+      language.save 
       redirect "/languages"
     else 
+      @error = "Please enter a language to submit"
       erb :"/languages/new.html"
     end 
   end
