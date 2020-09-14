@@ -1,10 +1,12 @@
-<h1>Computer Languages:</h1>
+<h1>Here's a list of the most popular languages of 2020:</h1>
 
 <ul>
     <% @languages.each do |language|%>
-    <h2><%= language.name%></h2>
-    <p><%= language.description%></p> 
     <img src="<%= language.logo_image%>" alt="language">
+    <h2><%= language.name%></h2> 
+    <p><%= language.description%></p> 
+    <p1>Companies that use this language: <%= language.companies %></p1>
+    
     <% end %>
 
   

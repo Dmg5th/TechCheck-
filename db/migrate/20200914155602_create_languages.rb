@@ -5,7 +5,7 @@ class CreateLanguages < ActiveRecord::Migration
         t.text :description 
         t.string :logo_image 
         t.string :companies 
-        t.integer :user_id 
+        t.integer :user_id  
     end
   end
 end
