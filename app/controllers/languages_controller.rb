@@ -34,8 +34,12 @@ class LanguagesController < ApplicationController
   # GET: /languages/5
   get "/languages/:id" do
     if logged_in?
-      @language = Language.find(params[:id])
-      erb :"/languages/show.html"
+        @language = Language.find_by(id: params[:id])
+        if @language 
+          erb :"/languages/show.html"
+        else 
+          redirect '/languages'
+        end 
     else 
       redirect '/login'
     end 
