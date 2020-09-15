@@ -8,3 +8,11 @@ TO DO
 # Plan out routes for controller following restful conventions  
 # build out forms and controller actions and passing appropriate data to views
 # build views (forms)
+
+
+POTENTIAL ADDED FUNCTIONALITY TO ADD:
+
+# Add API for companies and languages as opposed to hard-coding data 
+# Add default picture for languages if User doesn't update or create a language with an image(video 3)
+# Add button to add langauges to checklist 
+

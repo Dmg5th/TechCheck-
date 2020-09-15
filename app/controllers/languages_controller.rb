@@ -39,14 +39,20 @@ class LanguagesController < ApplicationController
 
   # PATCH: /languages/5
   patch "/languages/:id" do
-    language = Language.find(params[:id])
-    language.update(name: params["name"], description: params["description"], logo_image: params["logo_image"], companies: params["companies"] )
-    
-    redirect "/languages/#{language.id}"
+    @language = Language.find(params[:id])
+    if !params["language"]["name"].empty?
+      @language.update(params[:language])
+      redirect "/languages/#{@language.id}"
+    else  
+      @error = "Please enter a language to submit"
+      erb :"/languages/edit.html"
+    end 
   end
 
   # DELETE: /languages/5/delete
   delete "/languages/:id/delete" do
+    language = Language.find(params[:id])
+    language.delete 
     redirect "/languages"
   end
 end

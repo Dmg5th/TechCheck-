@@ -3,11 +3,11 @@
 <form action="/languages/<%=@language.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
     <!-- <label>Language Name</label> -->
-    <input type="text" name="name" value="<%=@language.name %>"><br>
+    <input type="text" name="language[name]" value="<%=@language.name %>"><br>
     <!-- <label>Language Image</label> --><br>
-    <input type="text" name="logo_image" placeholder="Image URL"><br>
+    <input type="text" name="language[logo_image]" placeholder="Image URL"><br>
     <!-- <label>Companies that use this language</label> --><br>
-    <textarea name="companies" placeholder="Companies that use this language"></textarea> <br>
+    <textarea name="language[companies]" placeholder="Companies that use this language"></textarea> <br>
     <!-- <label>Short bio and description of Language</label> --><br>
     <textarea name="description" placeholder="Short description"></textarea><br><br><br>
    
