@@ -4,15 +4,23 @@ class UsersController < ApplicationController
   get "/users" do
     erb :"/users/index.html"
   end
-
+ 
   # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
+  get "/signup" do
+    erb :"/users/signup.html"
   end
 
   # POST: /users
-  post "/users" do
-    redirect "/users"
+  post "/signup" do
+    user = User.new(params)
+    if user.username.empty? || user.password.empty?
+      @error = "Username and password can't be blank"
+      erb :"/users/signup.html"
+    else 
+      user.save
+      session[:user_id] = user.id 
+      redirect '/'
+    end 
   end
 
   # GET: /users/5
