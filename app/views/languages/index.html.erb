@@ -1,15 +1,17 @@
 <h1>Here's a list of the most popular languages of 2020:</h1> 
     <a href="/languages/new">Add a language to this list!</a>
-<ul>
+
     <% @languages.each do |language|%>
     <h2><a href="/languages/<%= language.id%>"><%= language.name%></a> </h2> 
     <img src="<%= language.logo_image%>" alt="language">
+    <% #if currently logged user created this language then allow them to edit otherwise don't%>
+    <a href="/languages/<%= language.id %>/edit">Edit</a>
     <% end %>
 
   
 
 
-</ul>
+
 
 
 
