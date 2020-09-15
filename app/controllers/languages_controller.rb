@@ -2,21 +2,15 @@ class LanguagesController < ApplicationController
 
   # GET: /languages
   get "/languages" do
-    if logged_in?
-      @languages = Language.all
-      erb :"/languages/index.html"
-    else
-      redirect '/login'
-    end 
+    require_login
+    @languages = Language.all
+    erb :"/languages/index.html"    
   end
 
   # GET: /languages/new
   get "/languages/new" do
-    if logged_in? 
-      erb :"/languages/new.html"
-    else 
-      redirect '/login'
-    end
+    require_login 
+    erb :"/languages/new.html"
   end 
 
   # POST: /languages
@@ -33,17 +27,14 @@ class LanguagesController < ApplicationController
 
   # GET: /languages/5
   get "/languages/:id" do
-    if logged_in?
-        @language = Language.find_by(id: params[:id])
-        if @language 
-          erb :"/languages/show.html"
+    require_login
+      @language = Language.find_by(id: params[:id])
+        if @language   
+          erb :"/languages/show.html"  
         else 
           redirect '/languages'
-        end 
-    else 
-      redirect '/login'
-    end 
-  end
+      end   
+    end
 
   # GET: /languages/5/edit
   get "/languages/:id/edit" do
