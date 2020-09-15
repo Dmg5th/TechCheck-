@@ -7,5 +7,7 @@
 
 <form action="/languages/<%=@language.id%>"method="post">
     <input type="hidden" name="_method" value="delete"><br>
-    <button type="submit">Delete Language</button>
+    <% if @language.user == current_user %>
+        <button type="submit">Delete Language</button>
+    <% end %>
 </form>

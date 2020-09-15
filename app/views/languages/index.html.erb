@@ -4,7 +4,7 @@
     <% @languages.each do |language|%>
     <h2><a href="/languages/<%= language.id%>"><%= language.name%></a> </h2> 
     <!-- <img src="<%= language.logo_image%>" alt="language"> -->
-    <% if language.user && session[:user_id ] == language.user.id %>
+    <% if current_user == language.user%>
         <a href="/languages/<%= language.id %>/edit">Edit</a>
     <% end %>
 <% end %>
