@@ -26,6 +26,11 @@ class SessionsController < ApplicationController
    
   end
 
+  get '/logout' do 
+    session.clear
+    redirect '/'
+  end 
+
 #   # GET: /sessions/5
 #   get "/sessions/:id" do
 #     erb :"/sessions/show.html"

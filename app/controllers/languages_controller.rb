@@ -2,14 +2,22 @@ class LanguagesController < ApplicationController
 
   # GET: /languages
   get "/languages" do
-    @languages = Language.all
-    erb :"/languages/index.html"
+    if logged_in?
+      @languages = Language.all
+      erb :"/languages/index.html"
+    else
+      redirect '/login'
+    end 
   end
 
   # GET: /languages/new
   get "/languages/new" do
-    erb :"/languages/new.html"
-  end
+    if logged_in? 
+      erb :"/languages/new.html"
+    else 
+      redirect '/login'
+    end
+  end 
 
   # POST: /languages
   post "/languages" do
@@ -25,9 +33,12 @@ class LanguagesController < ApplicationController
 
   # GET: /languages/5
   get "/languages/:id" do
-    @language = Language.find(params[:id])
-
-    erb :"/languages/show.html"
+    if logged_in?
+      @language = Language.find(params[:id])
+      erb :"/languages/show.html"
+    else 
+      redirect '/login'
+    end 
   end
 
   # GET: /languages/5/edit
