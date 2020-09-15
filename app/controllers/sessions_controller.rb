@@ -12,20 +12,18 @@ class SessionsController < ApplicationController
 
   # POST: /sessions
   post "/login" do
-    if user.username.empty? || user.password.empty?
+    if params["username"].empty? || params["password"].empty?
       @error = "Username and password can't be blank"
       erb :"/users/login.html"
-    user = User.find_by(username: params["username"], password: params['password'])
-    
-      
+    elsif
+        user = User.find_by(username: params["username"], password: params['password'])
+        session[:user_id] = user.id 
+        redirect '/'
+      else 
+        @error = "Account not found."
+        erb :"users/login.html"
+      end 
    
-    elsif User.find_by(username: user.username)
-      @error = "Account with that username already exists "
-    else 
-      user.save
-      session[:user_id] = user.id 
-      redirect '/'
-    end 
   end
 
 #   # GET: /sessions/5
