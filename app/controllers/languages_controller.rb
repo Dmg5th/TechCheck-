@@ -21,13 +21,13 @@ class LanguagesController < ApplicationController
 
   # POST: /languages
   post "/languages" do
-    language= Language.new(params)
-    if !language.name.empty?
-      language.save 
-      redirect "/languages"
-    else 
-      @error = "Please enter a language to submit"
-      erb :"/languages/new.html"
+    language = current_user.languages.build(params)
+      if !language.name.empty?
+        language.save 
+        redirect "/languages"
+      else 
+        @error = "Please enter a language to submit"
+        erb :"/languages/new.html"
     end 
   end
 
@@ -43,9 +43,12 @@ class LanguagesController < ApplicationController
 
   # GET: /languages/5/edit
   get "/languages/:id/edit" do
-    @language = Language.find(params[:id])
-
-    erb :"/languages/edit.html"
+    if logged_in?
+      @language = Language.find(params[:id])
+      erb :"/languages/edit.html"
+    else 
+      redirect '/login'
+    end 
   end
 
   # PATCH: /languages/5
