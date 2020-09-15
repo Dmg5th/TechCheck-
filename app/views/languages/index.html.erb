@@ -3,7 +3,7 @@
 
     <% @languages.each do |language|%>
     <h2><a href="/languages/<%= language.id%>"><%= language.name%></a> </h2> 
-    <img src="<%= language.logo_image%>" alt="language">
+    <!-- <img src="<%= language.logo_image%>" alt="language"> -->
     <% #if currently logged user created this language then allow them to edit otherwise don't%>
     <a href="/languages/<%= language.id %>/edit">Edit</a>
     <% end %>

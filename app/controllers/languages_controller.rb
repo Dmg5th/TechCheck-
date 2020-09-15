@@ -50,9 +50,9 @@ class LanguagesController < ApplicationController
   end
 
   # DELETE: /languages/5/delete
-  delete "/languages/:id/delete" do
+  delete "/languages/:id" do
     language = Language.find(params[:id])
-    language.delete 
+    language.destroy
     redirect "/languages"
   end
 end

@@ -12,6 +12,9 @@
     <textarea name="language[description]"> <%= @language.description %></textarea><br><br><br>
    
     <button>Edit Language</button>
+</form>
 
-
+<form action="/languages/<%=@language.id%>"method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete Language</button>
 </form>
