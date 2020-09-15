@@ -6,6 +6,7 @@ end
 
 
 run ApplicationController
+use SessionsController
 use UsersController
 use LanguagesController
 use Rack::MethodOverride 
