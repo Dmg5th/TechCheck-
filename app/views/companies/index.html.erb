@@ -1,0 +1,6 @@
+<h1>Here's a list of the biggest tech companies in 2020:</h1> 
+    <a href="/companies/new">Add a company to this list!</a>
+
+    <% @companies.each do |company|%>
+    <h2><a href="/companies/<%= company.id%>"><%= company.name%></a> </h2> 
+<% end %>

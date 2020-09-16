@@ -1,0 +1,16 @@
+<h1><img src="<%= @companies.logo_image%>" alt="company"></h1>
+<h2><%= @companies.name%></h2>
+<p><%= @companies.description%></p> <br>
+<p1>Languages that use this company uses: </p1>
+    <ul>
+    <% @companies.languages.each do |language| %>
+        <li><%= language.name %></li> 
+        <% end %>
+    </ul>
+
+<form action="/companies/<%=@companies.id%>"method="post">
+    <input type="hidden" name="_method" value="delete"><br> 
+    <%# if @companies.user == current_user %>
+     <%#   <button type="submit">Delete Language</button> %>
+    <% #end %>
+</form>

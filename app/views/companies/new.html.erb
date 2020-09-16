@@ -1,0 +1,17 @@
+<h1>Add a new Tech Company!</h1>
+<p><%=@error%></p>
+<form action="/companies" method="post">
+    <!-- <label>Company Name</label> -->
+    <input type="text" name="name" placeholder="Company Name "><br>
+    <!-- <label>Company Image</label> --><br>
+    <input type="text" name="logo_image" placeholder="Image URL"><br>
+    <!-- <label>Languages this company uses</label> --><br>
+    <textarea name="description" placeholder="Short description"></textarea><br><br><br>
+     <label>✔️Check the languages this company uses:✔️</label>
+    <% @language.each.with_index do |company, index| %>
+        <% if index % 5 == 0 %>
+        <% end %> 
+        <input type="checkbox" name="company.ids[]" value="<%= company.id %>"> <%=company.name%></input>
+    <% end %> <br>
+    <button>Add Company</button>
+  </form>

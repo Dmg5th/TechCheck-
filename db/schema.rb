@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20200916130259) do
     t.string "name"
     t.text   "description"
     t.string "logo_image"
+    t.text   "computer_languages"
   end
 
   create_table "languages", force: :cascade do |t|

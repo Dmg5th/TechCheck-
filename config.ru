@@ -6,6 +6,7 @@ end
 
 
 run ApplicationController
+use CompaniesController
 use SessionsController
 use UsersController
 use LanguagesController
