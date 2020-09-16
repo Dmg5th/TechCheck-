@@ -17,7 +17,9 @@ class LanguagesController < ApplicationController
 
   # POST: /languages
   post "/languages" do
-    language = current_user.languages.build(params)
+ 
+    language = current_user.languages.build(name: params[:name], description: params[:description], logo_image: params[:logo_image])
+    
       if !language.name.empty?
         language.save 
         redirect "/languages"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200916122725) do
+ActiveRecord::Schema.define(version: 20200916130259) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -23,19 +23,19 @@ ActiveRecord::Schema.define(version: 20200916122725) do
     t.string  "name"
     t.text    "description"
     t.string  "logo_image"
-    t.string  "companies"
     t.integer "user_id"
   end
 
   create_table "languages_companies", force: :cascade do |t|
-    t.integer "language_id"
-    t.integer "company_id"
+    t.string "name"
+    t.text   "description"
+    t.string "image"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
     t.string "email"
+    t.string "password_digest"
   end
 
 end
