@@ -1,8 +1,8 @@
-<h1>Add a new Language!</h1>
+<h1>Add a new Checklist☑️!</h1>
 <p><%=@error%></p>
-<form action="/languages" method="post">
-    <!-- <label>Language Name</label> -->
-    <input type="text" name="name" placeholder="Language Name "><br>
+<form action="/users" method="post">
+    <label>Language Name</label>
+    <input type="checkbox" name="name" placeholder="Language Name "><br>
     <!-- <label>Language Image</label> --><br>
     <input type="text" name="logo_image" placeholder="Image URL"><br>
     <!-- <label>Companies that use this language</label> --><br>
@@ -16,4 +16,3 @@
     <button>Add Language</button>
     <% #add option to add this language to checklist %> 
 </form>
- 

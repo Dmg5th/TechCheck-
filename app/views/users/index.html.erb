@@ -1,1 +1,4 @@
-<h1>This is the Model's index page.</h1>
+<h1>☑️Edit your checklist, or check to see what languages your friends are learning!☑️</h1>
+    <% @user.each do |user|%>
+    <h2><a href="/users/<%= user.id%>"><%= user.username%></a> </h2> 
+<% end %>

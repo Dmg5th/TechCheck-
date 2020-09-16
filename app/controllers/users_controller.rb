@@ -2,15 +2,25 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
+    @user = User.all 
     erb :"/users/index.html"
   end
  
   # GET: /users/new
+  get "/users/new" do
+    @languages = Language.all 
+    erb :"/users/new.html"
+  end 
+
+  # POST: /users
+  
+  
+  # GET sign up form 
   get "/signup" do
     erb :"/users/signup.html"
   end
  
-  # POST: /users
+  # POST: Signup form 
   post "/signup" do
     user = User.new(params)
     if user.username.empty? || user.password.empty?

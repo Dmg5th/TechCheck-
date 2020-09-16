@@ -27,9 +27,8 @@ ActiveRecord::Schema.define(version: 20200916130259) do
   end
 
   create_table "languages_companies", force: :cascade do |t|
-    t.string "name"
-    t.text   "description"
-    t.string "image"
+    t.integer "company_id"
+    t.integer "language_id"
   end
 
   create_table "users", force: :cascade do |t|

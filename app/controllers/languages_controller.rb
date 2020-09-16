@@ -18,9 +18,11 @@ class LanguagesController < ApplicationController
 
   # POST: /languages
   post "/languages" do
-    # binding.pry 
+    companies = Company.where("companies.id IN (?)", params["company.ids"])
     language = current_user.languages.build(name: params[:name], description: params[:description], logo_image: params[:logo_image])
-      if !language.name.empty?
+      binding.pry   
+    if !language.name.empty?
+        language.companies << companies 
         language.save 
         redirect "/languages"
       else 

@@ -17,4 +17,6 @@ Company.create(name: 'Google', description: "Google, LLC is an American multinat
 
 Google was founded in September 1998 by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University in California. Together they own about 14 percent of its shares and control 56 percent of the stockholder voting power through supervoting stock. Google.com is the most visited website in the world.[15] Several other Google services also figure in the top 100 most visited websites, including YouTube and Blogger. Google was the most valuable brand in the world in 2017 (surpassed by Amazon),[16] but has received significant criticism involving issues such as privacy concerns, tax avoidance, antitrust, censorship, and search neutrality.", logo_image: 'https://lh3.googleusercontent.com/proxy/ZsyHxgXQc6ypva7TRSFAHjpKRfNh8iIU3exqEPW0Co3HLA3zBgZpx6111EVaslTb8YHSw0FkS5HHPxY8w0qQXlwWXN6mqp0YXPj9QBTrOTssSHUgO9UOzbxJrQ')
 
+
+User.create(username: "Daniel")
 puts "done."
