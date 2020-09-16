@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   get "/signup" do
     erb :"/users/signup.html"
   end
-
+ 
   # POST: /users
   post "/signup" do
     user = User.new(params)

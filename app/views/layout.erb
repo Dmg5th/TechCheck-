@@ -15,13 +15,18 @@
   </head>
   <body>
     <div>
+      <% if logged_in? %>
       <div><a href="/languages">Languages</a></div>
-      <div><a href="/">Home</a></div>
       <div><a href="/logout">Logout</a></div>
-    </div>
+      <% else %>
+      <div><a href="/signup">Signup for Tech Check!</a></div>
+      <div><a href="/login">Log in</a></div>
+      <% end %>
+      <div><a href="/">Home</a></div>
+    </div> 
     <div class="wrapper">
 
-        <%= yield %>
+        <%= yield %> 
 
       <footer class="branding">
         <small>&copy; 2020 <strong>TechCheck</strong></small>
