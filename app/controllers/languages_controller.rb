@@ -12,6 +12,7 @@ class LanguagesController < ApplicationController
 
   # GET: /languages/new
   get "/languages/new" do
+    @companies = Company.all 
     erb :"/languages/new.html"
   end 
 

@@ -6,11 +6,11 @@
     <!-- <label>Language Image</label> --><br>
     <input type="text" name="logo_image" placeholder="Image URL"><br>
     <!-- <label>Companies that use this language</label> --><br>
-    <input type="text" name="companies" placeholder="Companies"><br>
-    <!-- <label>Short bio and description of Language</label> --><br>
     <textarea name="description" placeholder="Short description"></textarea><br><br><br>
-   
+     <label>✔️Check✔️ the companies that use this language:</label>
+    <% @companies.each do |company| %>
+    <input type="checkbox" name="company[name]" value="<%= company.id %>"> <%=company.name%></input>
+    <% end %> <br>
     <button>Add Language</button>
-
-
+    <% #add option to add this language to checklist %> 
 </form>
