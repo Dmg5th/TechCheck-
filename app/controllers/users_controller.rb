@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   # GET: /users/new
   get "/users/new" do
     @languages = Language.all 
+    @companies = Company.all
     erb :"/users/new.html"
   end 
 

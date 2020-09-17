@@ -1,18 +1,21 @@
 <h1>☑️Add a new Checklist!☑️</h1>
+<p>(Check the tech companies tab to see what languages those companies are using)</p>
 <p><%=@error%></p>
-<form action="/users" method="post">
-    <label>User Name</label>
-    <label>Your dream company to work for</label><br>
-    <textarea name="companies" placeholder="companies></textarea><br><br><br>
-     <label>✔️Check the companies that use this language:✔️</label>
-    <input type="checkbox" name="name" placeholder="User Name "><br>
-    
-    <input type="text" name="logo_image" placeholder="Image URL"><br>
-    <!-- <label>Companies that use this language</label> --><br>
-    
-    
-    
-   <br>
-    <button>Add Checklist</button>
-    <% #add option to add this language to checklist %> 
+<form action="/languages" method="post">
+    <label>Your username</label> 
+    <input type="text" name="name" placeholder="username"><br><br>
+    <label>Check dream companies to work for(set your goals high!)</label> <br><br>
+    <% @companies.each.with_index do |company, index| %>
+        <% if index % 5 == 0 %>
+        <% end %> 
+        <input type="checkbox" name="company.ids[]" value="<%= company.id %>"> <%=company.name%></input>
+    <% end %> <br><br>
+     <label>✔️Check the languages you'd need to learn to work there:✔️</label> <br><br>
+    <% @languages.each.with_index do |language, index| %>
+        <% if index % 5 == 0 %>
+        <% end %> 
+        <input type="checkbox" name="language.ids[]" value="<%= language.id %>"> <%=language.name%></input>
+    <% end %> <br><br>
+    <button>Add checklist!</button>
+   
 </form>
