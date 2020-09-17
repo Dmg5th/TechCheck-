@@ -70,10 +70,11 @@ class CompaniesController < ApplicationController
   end
 
   delete "/usercompanies/:id" do 
+
     @user = User.find_by(id: params[:id])
     @cu = CompaniesUser.find_by(user_id: current_user.id, company_id: params["id"])
     @cu.destroy
-    redirect "/users"
+    redirect "/users/#{@user.id}"
   end 
 end
 

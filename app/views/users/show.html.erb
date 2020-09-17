@@ -2,8 +2,10 @@
 <p1> Company Checklist: </p1>
     <% @user.companies.each do |company| %>
         <h3><%= company.name %></h3>
+        <li><%= company.computer_languages %></li>
             <% company.languages.each do |language| %> 
             <li><%= language.name %> </li>
+            
         <% end %>
    <% end %> <br>
  <a href="/users/<%= @user.id %>/edit">Edit Checklist</a>

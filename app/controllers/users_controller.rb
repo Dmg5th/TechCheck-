@@ -74,7 +74,6 @@ class UsersController < ApplicationController
     current_user.companies << c
     end 
     redirect "/users/#{@user.id} " 
-   
   end
 
 end 
