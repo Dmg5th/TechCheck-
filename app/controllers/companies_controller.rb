@@ -42,16 +42,28 @@ class CompaniesController < ApplicationController
 
 # GET: /companies/5/edit
   get "/companies/:id/edit" do
+    @company = Company.find_by(id: params[:id])
     erb :"/companies/edit.html"
   end
 
   # PATCH: /companies/5
   patch "/companies/:id" do
-    redirect "/companies/:id"
+    @company = Company.find_by(id: params[:id])
+    if !params["company"]["name"].empty?
+      @company.update(params[:company])
+    redirect "/companies/#{@company.id}"
+    else 
+      @error = "Please enter a company to submit."
+      erb :"/companies/edit.html"
+    end 
   end
 
-  # DELETE: /companies/5/delete
-  delete "/companies/:id/delete" do
+   # DELETE: /companies/5/delete
+  delete "/companies/:id" do
+    @company = Company.find_by(id: params[:id])
+    @company.destroy
     redirect "/companies"
   end
 end
+
+

@@ -1,1 +1,20 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit info for <%=@company.name %>!</h1>
+<p><%=@error%></p>
+<form action="/companies/<%=@company.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <!-- <label>Company Name</label> -->
+    <input type="text" name="company[name]" value="<%=@company.name %>"><br>
+    <!-- <label>company Image</label> --><br>
+    <input type="text" name="company[logo_image]" value="Image URL"><br>
+    <!-- <label>Languages that this company uses</label> --><br>
+    <textarea name="company[computer_languages]"> <%= @company.computer_languages %></textarea> <br>
+    <!-- <label>Short bio and description of the company</label> --><br>
+    <textarea name="company[description]"> <%= @company.description %></textarea><br><br><br>
+   
+    <button>Edit Company</button>
+</form>
+
+<form action="/company/<%=@company.id%>"method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete company</button>
+</form>

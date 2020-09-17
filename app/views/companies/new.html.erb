@@ -11,7 +11,7 @@
     <% @language.each.with_index do |company, index| %>
         <% if index % 5 == 0 %>
         <% end %> 
-        <input type="checkbox" name="company.ids[]" value="<%= company.id %>"> <%=company.name%></input>
+        <input type="checkbox" name="language.ids[]" value="<%= language.id %>"> <%=language.name%></input>
     <% end %> <br>
     <button>Add Company</button>
   </form>

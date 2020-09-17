@@ -2,7 +2,6 @@ STILL NEED TO:
 
 # Add User_languages association 
 # Add checklist form
-# build out companies controller 
 # Seed more data  
 
 
@@ -10,6 +9,7 @@ STILL NEED TO:
 
 POTENTIAL ADDED FUNCTIONALITY TO ADD:
 
+# Add the ability for only logged in users to edit and delete new companies 
 # Add API for companies and languages as opposed to hard-coding data 
 # Add default picture for languages if User doesn't update or create a language with an image(video 3)
 # Add button to add langauges to checklist 
