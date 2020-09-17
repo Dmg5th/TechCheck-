@@ -1,26 +1,10 @@
 class UsersController < ApplicationController
 
-  # GET: /users
-  get "/users" do
-    @user = User.all 
-    erb :"/users/index.html"
-  end
- 
-  # GET: /users/new
-  get "/users/new" do
-    @languages = Language.all 
-    @companies = Company.all
-    erb :"/users/new.html"
-  end 
-
-  # POST: /users
-  
-  
   # GET sign up form 
   get "/signup" do
     erb :"/users/signup.html"
   end
- 
+  
   # POST: Signup form 
   post "/signup" do
     user = User.new(params)
@@ -36,8 +20,39 @@ class UsersController < ApplicationController
     end 
   end
 
+  # GET: /users
+  get "/users" do
+    require_login
+    @user = User.all 
+    erb :"/users/index.html"
+  end
+ 
+  # GET: /users/new
+  get "/users/new" do
+    require_login
+    @user = User.all 
+    @languages = Language.all 
+    @companies = Company.all
+    erb :"/users/new.html"
+  end 
+
+  # POST: /users
+  post "/users" do 
+     if !current_user.username.empty?
+      params["company.ids"].each do |id| 
+        c = Company.find(id)
+        current_user.companies << c
+      end 
+      redirect "/users"
+    else 
+      @error = "Please enter a language to submit"
+      erb :"/users/new.html"
+    end 
+  end 
+
   # GET: /users/5
   get "/users/:id" do
+    @user = User.find_by(id: params[:id])
     erb :"/users/show.html"
   end
 
@@ -56,3 +71,6 @@ class UsersController < ApplicationController
     redirect "/users"
   end
 end
+
+
+

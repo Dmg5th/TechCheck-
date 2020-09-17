@@ -18,9 +18,13 @@ class CompaniesController < ApplicationController
 
   # POST: /companies
   post "/companies" do
-    company = Company.new(params)
+    company = Company.new(name: params[:name], logo_image: params[:logo_image], description: params[:description] )
     if !company.name.empty?
       company.save
+      params["language.ids"].each do |id| 
+          l = Language.find(id)
+          company.languages << l 
+      end 
       redirect "/companies"
     else 
       @error = "Please enter a language to submit"
@@ -64,6 +68,13 @@ class CompaniesController < ApplicationController
     @company.destroy
     redirect "/companies"
   end
+
+  delete "/usercompanies/:id" do 
+    @cu = CompaniesUser.find_by(user_id: current_user.id, company_id: params["id"])
+  
+    @cu.destroy
+    redirect "/users"
+  end 
 end
 
 

@@ -8,7 +8,7 @@
     <!-- <label>Languages this company uses</label> --><br>
     <textarea name="description" placeholder="Short description"></textarea><br><br><br>
      <label>✔️Check the languages this company uses:✔️</label>
-    <% @language.each.with_index do |company, index| %>
+    <% @language.each.with_index do |language, index| %>
         <% if index % 5 == 0 %>
         <% end %> 
         <input type="checkbox" name="language.ids[]" value="<%= language.id %>"> <%=language.name%></input>

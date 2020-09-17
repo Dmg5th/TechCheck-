@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     validates  :username, :password, presence: true
     validates_uniqueness_of :username 
     has_many :languages 
-    has_many :companies
+    has_many :companies_users
+    has_many :companies, through: :companies_users
 end
  
