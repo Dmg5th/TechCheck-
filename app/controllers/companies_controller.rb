@@ -18,8 +18,17 @@ class CompaniesController < ApplicationController
 
   # POST: /companies
   post "/companies" do
-    redirect "/companies"
-  end
+    company = Company.new(params)
+    if !company.name.empty?
+      company.save
+      redirect "/companies"
+    else 
+      @error = "Please enter a language to submit"
+      erb :"/companies/new.html"
+    end 
+ end
+
+
 
   # GET: /companies/5
   get "/companies/:id" do
