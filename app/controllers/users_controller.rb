@@ -38,39 +38,50 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do 
+    user = User.find_by(id: params[:id])
      if !current_user.username.empty?
       params["company.ids"].each do |id| 
         c = Company.find(id)
         current_user.companies << c
       end 
-      redirect "/users"
+      redirect "/users" #/#{user.id}? How come this doesn't work?
     else 
-      @error = "Please enter a language to submit"
+      @error = "Please choose at least one company to add to your checklist."
       erb :"/users/new.html"
     end 
   end 
 
   # GET: /users/5
   get "/users/:id" do
+    require_login
     @user = User.find_by(id: params[:id])
     erb :"/users/show.html"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    @companies = Company.all
+    @user = User.find_by(id: params[:id])
     erb :"/users/edit.html"
   end
-
+  
   # PATCH: /users/5
   patch "/users/:id" do
-    redirect "/users/:id"
+    @user = User.find_by(id: params[:id])
+    @user.companies = []
+    params["company.ids"].each do |id| 
+    c = Company.find(id)
+    current_user.companies << c
+    end 
+    redirect "/users/#{@user.id} " 
+   
   end
 
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
-end
+end 
+
+
+
+
 
 
 

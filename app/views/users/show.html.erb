@@ -2,19 +2,11 @@
 <p1> Company Checklist: </p1>
     <% @user.companies.each do |company| %>
         <h3><%= company.name %></h3>
-       
-        <ul> 
-        <% company.languages.each do |language| %> 
-          <li><%= language.name %> </li>
+            <% company.languages.each do |language| %> 
+            <li><%= language.name %> </li>
         <% end %>
-        <% if current_user.id == @user.id %>
-        <form action="/usercompanies/<%=company.id%>"method="post">
-            <input type="hidden" name="_method" value="delete"><br> 
-           <button type="submit">Delete Company</button>
-        </form>
-        <% end %>
-        </ul>
-        <% end %>
+   <% end %> <br>
+ <a href="/users/<%= @user.id %>/edit">Edit Checklist</a>
    
 
      

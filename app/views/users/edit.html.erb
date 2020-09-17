@@ -1,1 +1,33 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit your checklist <%= @user.username%> !</h1>
+<p1> Company Checklist: </p1>
+    <% @user.companies.each do |company| %>
+        <h3><%= company.name %></h3>
+   <% company.languages.each do |language| %> 
+          <li><%= language.name %> </li>
+        <% end %>
+        <% if current_user.id == @user.id %>
+    <form action="/usercompanies/<%=company.id%>"method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Take this company off the list</button>
+    </form>
+        <% end %>
+  <% end %> 
+    <br>
+<form action="/users/<%=@user.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+<label>Select Additional companies you'd like to work for(set your goals high!):</label> <br><br>
+    <% @companies.each.with_index do |company, index| %>
+        <% if index % 5 == 0 %>
+        <% end %> 
+        <input type="checkbox" name="company.ids[]" value="<%= company.id %>"> <%=company.name%></input>
+    <% end %> <br><br>
+ <button type="submit">Edit Checklist</button>
+</form>
+
+
+
+
+
+
+
+

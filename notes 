@@ -1,8 +1,10 @@
 STILL NEED TO:
 
-# Add User_languages association 
-# Add checklist form
+# add patch for checklist 
+# Add checks for empty fields for creating a new company and creating a new user 
 # Seed more data  
+# CSS 
+# Add a bar to see how much of the language you know(progress bar)
 
 
 
