@@ -44,13 +44,12 @@ class UsersController < ApplicationController
       @companies = params["company.ids"]
       if @companies.nil?
         @error2 = "Please choose at least one company to add to your checklist."
-        redirect "/users/new?error2=hello"
       else
         @companies.each do |id| 
           c = Company.find(id)
           current_user.companies << c
         end
-        redirect "/users" #/#{user.id}? How come this doesn't work?
+        redirect "/users/#{current_user.id}"
       end 
     else 
       @error = "Please choose at least one company to add to your checklist."
