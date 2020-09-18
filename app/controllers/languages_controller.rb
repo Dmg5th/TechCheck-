@@ -32,6 +32,7 @@ class LanguagesController < ApplicationController
 
   # GET: /languages/5
   get "/languages/:id" do
+    @companies = Company.find_by(id: params[:id])
     @language = Language.find_by(id: params[:id])
       if @language   
         erb :"/languages/show.html"  

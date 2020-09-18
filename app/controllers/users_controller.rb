@@ -7,8 +7,9 @@ class UsersController < ApplicationController
   
   # POST: Signup form 
   post "/signup" do
+    # binding.pry 
     user = User.new(params)
-    if user.username.empty? || user.password.empty?
+    if params["username"].empty? || params["password"].empty?
       @error = "Username and password can't be blank"
       erb :"/users/signup.html"
     elsif User.find_by(username: user.username)
@@ -40,11 +41,17 @@ class UsersController < ApplicationController
   post "/users" do 
     user = User.find_by(id: params[:id])
      if !current_user.username.empty?
-      params["company.ids"].each do |id| 
-        c = Company.find(id)
-        current_user.companies << c
+      @companies = params["company.ids"]
+      if @companies.nil?
+        @error2 = "Please choose at least one company to add to your checklist."
+        redirect "/users/new?error2=hello"
+      else
+        @companies.each do |id| 
+          c = Company.find(id)
+          current_user.companies << c
+        end
+        redirect "/users" #/#{user.id}? How come this doesn't work?
       end 
-      redirect "/users" #/#{user.id}? How come this doesn't work?
     else 
       @error = "Please choose at least one company to add to your checklist."
       erb :"/users/new.html"
@@ -73,7 +80,7 @@ class UsersController < ApplicationController
     c = Company.find(id)
     current_user.companies << c
     end 
-    redirect "/users/#{@user.id} " 
+    redirect "/users/#{current_user.id} " 
   end
 
 end 
