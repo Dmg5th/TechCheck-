@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
       User.find_by(id: session[:user_id])
     end 
   end
-  puts "hello world!"
+
   def require_login
     unless logged_in?
       redirect '/login'
