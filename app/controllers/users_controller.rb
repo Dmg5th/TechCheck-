@@ -46,7 +46,9 @@ class UsersController < ApplicationController
       else
         @companies.each do |id| 
           c = Company.find(id)
+          if !current_user.companies.include?(c)
           current_user.companies << c
+          end 
         end
         redirect "/users/#{current_user.id}"
       end 
@@ -84,6 +86,12 @@ class UsersController < ApplicationController
       redirect "/users/#{current_user.id}" 
     end
   end 
+
+  # delete "/users/:id" do
+  #   user = User.find(params[:id])
+  #   user.destroy
+  #   redirect "/users"
+  # end
 end 
 
 

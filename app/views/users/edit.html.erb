@@ -15,7 +15,7 @@
 <br>
 <form action="/users/<%=@user.id %>" method="post">
 <input type="hidden" name="_method" value="patch">
-<label>Select Additional companies you'd like to work for(set your goals high!):</label> <br><br>
+<label>Start fresh and select the companies you'd like to work for(set your goals high!):</label> <br><br>
     <% @companies.each.with_index do |company, index| %>
         <% if index % 5 == 0 %>
         <% end %> 

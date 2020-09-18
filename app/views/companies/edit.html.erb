@@ -13,8 +13,12 @@
    
     <button>Edit Company</button>
 </form>
-
+<% if check_companies(@company) %>
 <form action="/company/<%=@company.id%>"method="post">
     <input type="hidden" name="_method" value="delete">
     <button type="submit">Delete company</button>
 </form>
+<% end %>
+
+
+

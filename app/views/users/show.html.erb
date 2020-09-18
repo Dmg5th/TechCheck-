@@ -4,9 +4,19 @@
         <h3><%= company.name %></h3>
         <p>Languages: </p> <li><%= company.computer_languages %></li>
     <% end %> <br>
-<% if current_user.id == @user.id %>
-    <a href="/users/<%= @user.id %>/edit">Edit Checklist</a>
-<% end %>
+
+    <% if current_user.id == @user.id %>
+        <a href="/users/<%= @user.id %>/edit">Edit Checklist</a><br><br>
+    <% end %>
+
+    <!-- <form action="/user/<%=@user.id%>"method="post">
+        <input type="hidden" name="_method" value="delete"><br> 
+        <button type="submit">Delete and start fresh checklist</button>
+    </form> -->
+
+
+
+
 
 
    

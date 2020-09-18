@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
   # POST: /companies
   post "/companies" do
     company = Company.new(name: params[:name], logo_image: params[:logo_image], description: params[:description] )
-    if !company.name.empty?
+    if !company.name.empty? && !params["language.ids"].nil?
       company.save
       params["language.ids"].each do |id| 
           l = Language.find(id)
@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
       end 
       redirect "/companies"
     else 
-      @error = "Please enter a language to submit"
+      @error = "Please enter a company name and some of their languages to submit"
       erb :"/companies/new.html"
     end 
  end

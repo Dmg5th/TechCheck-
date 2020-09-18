@@ -18,14 +18,16 @@ class LanguagesController < ApplicationController
 
   # POST: /languages
   post "/languages" do
+    @companies = Company.all
     companies = Company.where("companies.id IN (?)", params["company.ids"])
     language = current_user.languages.build(name: params[:name], description: params[:description], logo_image: params[:logo_image])
-      if !language.name.nil?
+    # binding.pry
+      if !language.name == "" && !companies.nil? #this still isn't working for some reason 
         language.companies << companies 
         language.save 
         redirect "/languages"
       else 
-        @error = "Please enter a language to submit"
+        @error = "Please enter a language, and companies that use that language to submit"
         erb :"/languages/new.html"
     end 
   end
