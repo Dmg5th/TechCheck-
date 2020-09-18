@@ -57,11 +57,13 @@ class UsersController < ApplicationController
   get "/users/:id" do
     require_login
     @user = User.find_by(id: params[:id])
+    # binding.pry
     erb :"/users/show.html"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    require_login
     @companies = Company.all
     @user = User.find_by(id: params[:id])
     erb :"/users/edit.html"
@@ -82,7 +84,6 @@ class UsersController < ApplicationController
       redirect "/users/#{current_user.id}" 
     end
   end 
-
 end 
 
 
