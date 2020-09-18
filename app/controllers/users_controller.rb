@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   
   # POST: Signup form 
   post "/signup" do
-    # binding.pry 
     user = User.new(params)
     if params["username"].empty? || params["password"].empty?
       @error = "Username and password can't be blank"
@@ -39,8 +38,8 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do 
-    user = User.find_by(id: params[:id])
-     if !current_user.username.empty?
+    # user = User.find_by(id: params[:id])
+    #  if !current_user.username.empty?
       @companies = params["company.ids"]
       if @companies.nil?
         @error2 = "Please choose at least one company to add to your checklist."
@@ -51,11 +50,8 @@ class UsersController < ApplicationController
         end
         redirect "/users/#{current_user.id}"
       end 
-    else 
-      @error = "Please choose at least one company to add to your checklist."
-      erb :"/users/new.html"
     end 
-  end 
+  
 
   # GET: /users/5
   get "/users/:id" do
@@ -73,14 +69,19 @@ class UsersController < ApplicationController
   
   # PATCH: /users/5
   patch "/users/:id" do
-    @user = User.find_by(id: params[:id])
-    @user.companies = []
-    params["company.ids"].each do |id| 
-    c = Company.find(id)
-    current_user.companies << c
-    end 
-    redirect "/users/#{current_user.id} " 
-  end
+    @companies = params["company.ids"]
+      if @companies.nil?
+        redirect "/users/#{current_user.id}" 
+      else
+        @user = User.find_by(id: params[:id])
+        @user.companies = []
+        params["company.ids"].each do |id| 
+        c = Company.find(id)
+        current_user.companies << c
+      end 
+      redirect "/users/#{current_user.id}" 
+    end
+  end 
 
 end 
 

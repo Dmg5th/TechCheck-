@@ -1,7 +1,6 @@
 STILL NEED TO:
 
-# delete directs to user/id/edit page 
-# Add checks for empty fields for creating a new company and creating a new user 
+# Make it so only the User can edit their own checklists  
 # Seed more data  
 # CSS 
 # Add a bar to see how much of the language you know(progress bar)
