@@ -1,7 +1,7 @@
 <h1><img src="<%= @companies.logo_image%>" alt="company"></h1>
 <h2><%= @companies.name%></h2>
 <p><%= @companies.description%></p> <br>
-<p1>Languages that this company uses: </p1>
+<p1>Languages that this company uses: <%= @companies.computer_languages%></p1>
     <ul>
     <% @companies.languages.each do |language| %>
         <li><%= language.name %></li> 
