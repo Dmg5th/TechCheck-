@@ -16,16 +16,15 @@
   <body>
   <body>
     <div>
+      <a href="/">Home⎮</a>
       <% if logged_in? %>
-      <div><a href="/companies">Tech Companies</a></div>
-      <div><a href="/languages">Languages</a></div>
-      <div><a href="/logout">Logout</a></div>
+      <a href="/companies">Tech Company Index⎮</a>
+      <a href="/languages">Languages⎮</a>
+      <a href="/logout">Logout⎮</a>
       <% else %>
-      <div><a href="/signup">Signup for Tech Check!</a></div>
-      <div><a href="/login">Log in</a></div>
+      <a href="/signup">Signup for Tech Check!⎮</a>
+      <a href="/login">Log in⎮</a>
       <% end %>
-      <div><a href="/">Home</a></div>
-    </div> 
     <div class="wrapper">
 
         <%= yield %> 
