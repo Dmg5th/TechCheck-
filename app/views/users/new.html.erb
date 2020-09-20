@@ -1,9 +1,8 @@
 <h1>☑️Add a new Checklist!☑️</h1>
-<p>(Check the tech companies tab to see what languages those companies are using)</p>
 <p><%=@error%></p>
 <form action="/users" method="post">
     <label>Check dream companies to work for(set your goals high!)</label> <br><br>
-    <% @companies.each.with_index do |company, index| %>
+   <% @companies.each.with_index do |company, index| %>
         <% if index % 5 == 0 %>
         <% end %> 
         <input type="checkbox" name="company.ids[]" value="<%= company.id %>"> <%=company.name%></input>
