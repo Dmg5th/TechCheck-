@@ -1,10 +1,6 @@
 class CompaniesController < ApplicationController
 
-  # before do 
-  #   require_login
-  # end 
-
-  # GET: /companies
+    # GET: /companies
   get "/companies" do
     @companies = Company.all 
     erb :"/companies/index.html"
