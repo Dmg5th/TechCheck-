@@ -1,4 +1,3 @@
-TechCheck
 Welcome to TechCheck! This is a an online tool for software developers and aspiring developers to keep track of the tech companies they would love to work for, and what computer languages they would need to learn in order to work at those places.  Sign in to see what your friends are learning, and make your own tech checklist!
 
 Installation
