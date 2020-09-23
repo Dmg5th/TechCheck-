@@ -22,12 +22,12 @@ class LanguagesController < ApplicationController
     companies = Company.where("companies.id IN (?)", params["company.ids"])
     language = current_user.languages.build(name: params[:name], description: params[:description], logo_image: params[:logo_image])
     if language.name == "" 
-      @error = "Please enter a language, and companies that use that language to submit"
-      erb :"/languages/new.html"
-      else 
+        @error = "Please enter a language, and companies that use that language to submit"
+        erb :"/languages/new.html"
+    else 
       language.companies << companies 
-        language.save 
-        redirect "/languages"
+      language.save 
+      redirect "/languages"
     end 
   end
 
@@ -44,14 +44,18 @@ class LanguagesController < ApplicationController
 
   # GET: /languages/5/edit
   get "/languages/:id/edit" do
-    @language = Language.find(params[:id])  
-    erb :"/languages/edit.html"
+    @language = Language.find(params[:id])
+    if @language.user == current_user
+      erb :"/languages/edit.html"
+    else 
+      redirect "/languages"
+    end   
   end  
 
   # PATCH: /languages/5
   patch "/languages/:id" do
     @language = Language.find(params[:id])
-    if !params["language"]["name"].empty?
+    if @language.user == current_user && !params["language"]["name"].empty?
       @language.update(params[:language])
       redirect "/languages/#{@language.id}"
     else  

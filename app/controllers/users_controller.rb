@@ -68,16 +68,20 @@ class UsersController < ApplicationController
     require_login
     @companies = Company.all
     @user = User.find_by(id: params[:id])
-    erb :"/users/edit.html"
+      if @user == current_user
+        erb :"/users/edit.html"
+      else
+        redirect "/users"
+      end 
   end
-  
-  # PATCH: /users/5
+
+# PATCH: /users/5
   patch "/users/:id" do
+    @user = User.find_by(id: params[:id])
     @companies = params["company.ids"]
-      if @companies.nil?
+      if @companies.nil? && @user != current_user
         redirect "/users/#{current_user.id}" 
       else
-        @user = User.find_by(id: params[:id])
         @user.companies = []
         params["company.ids"].each do |id| 
         c = Company.find(id)
@@ -86,6 +90,8 @@ class UsersController < ApplicationController
       redirect "/users/#{current_user.id}" 
     end
   end 
+
+
 
 end 
 

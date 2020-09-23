@@ -15,22 +15,23 @@ class CompaniesController < ApplicationController
   # POST: /companies
   post "/companies" do
     company = Company.new(name: params[:name], logo_image: params[:logo_image], description: params[:description] )
-    if !company.name.empty? && !params["language.ids"].nil?
-      company.save
-      params["language.ids"].each do |id| 
+    if company.save
+      if params["language.ids"] != nil 
+          params["language.ids"].each do |id| 
           l = Language.find(id)
           company.languages << l 
+          end 
       end 
+      company.save
       redirect "/companies"
     else 
-      @error = "Please enter a company name and some of their languages to submit"
+     @error = company.errors.full_messages.to_sentence
+     @language = Language.all
       erb :"/companies/new.html"
     end 
  end
 
-
-
-  # GET: /companies/5
+# GET: /companies/5
   get "/companies/:id" do
     @companies = Company.find_by(id: params[:id])
       if @companies
@@ -43,15 +44,19 @@ class CompaniesController < ApplicationController
 # GET: /companies/5/edit
   get "/companies/:id/edit" do
     @company = Company.find_by(id: params[:id])
-    erb :"/companies/edit.html"
+    if @company.user == current_user
+       erb :"/companies/edit.html"
+    else 
+      redirect "/companies"
+    end 
   end
+  
 
   # PATCH: /companies/5
   patch "/companies/:id" do
     @company = Company.find_by(id: params[:id])
-    if !params["company"]["name"].empty?
-      @company.update(params[:company])
-    redirect "/companies/#{@company.id}"
+    if @company.update(params[:company]) && @company.user == current_user
+      redirect "/companies/#{@company.id}"
     else 
       @error = "Please enter a company to submit."
       erb :"/companies/edit.html"
